@@ -1,0 +1,8 @@
+{
+  "id": 1,
+  "nombre": "Juan",
+  "apellido": "Pérez",
+  "fechaNac": "1990-01-01",
+  "reportaA": 2,
+  "extension": 1234
+}

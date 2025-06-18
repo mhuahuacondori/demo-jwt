@@ -1,0 +1,253 @@
+2025-06-18 00:01:57 [SpringApplicationShutdownHook] INFO  GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-18 00:01:58 [tomcat-shutdown] INFO  GracefulShutdown - Graceful shutdown complete
+2025-06-18 00:01:58 [SpringApplicationShutdownHook] INFO  LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-18 00:01:58 [SpringApplicationShutdownHook] INFO  HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-18 00:01:58 [SpringApplicationShutdownHook] INFO  HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-06-18 00:02:04 [restartedMain] INFO  DemoJwtApplication - Starting DemoJwtApplication using Java 17.0.12 with PID 331856 (D:\WorkSpace\ideaSpace\demo-jwt\target\classes started by Marco in D:\WorkSpace\ideaSpace\demo-jwt)
+2025-06-18 00:02:04 [restartedMain] DEBUG DemoJwtApplication - Running with Spring Boot v3.4.5, Spring v6.2.6
+2025-06-18 00:02:04 [restartedMain] INFO  DemoJwtApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-18 00:02:04 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-06-18 00:02:04 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-06-18 00:02:05 [restartedMain] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-18 00:02:05 [restartedMain] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 39 ms. Found 2 JPA repository interfaces.
+2025-06-18 00:02:06 [restartedMain] INFO  TomcatWebServer - Tomcat initialized with port 8090 (http)
+2025-06-18 00:02:06 [restartedMain] INFO  Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"]
+2025-06-18 00:02:06 [restartedMain] INFO  StandardService - Starting service [Tomcat]
+2025-06-18 00:02:06 [restartedMain] INFO  StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-06-18 00:02:06 [restartedMain] INFO  [/] - Initializing Spring embedded WebApplicationContext
+2025-06-18 00:02:06 [restartedMain] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1460 ms
+2025-06-18 00:02:06 [restartedMain] DEBUG JWTAuthorizationFilter - Filter 'JWTAuthorizationFilter' configured for use
+2025-06-18 00:02:06 [restartedMain] INFO  HikariDataSource - HikariPool-1 - Starting...
+2025-06-18 00:02:06 [restartedMain] INFO  HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6d348a64
+2025-06-18 00:02:06 [restartedMain] INFO  HikariDataSource - HikariPool-1 - Start completed.
+2025-06-18 00:02:07 [restartedMain] INFO  SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-18 00:02:07 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-18 00:02:07 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailServiceImpl
+2025-06-18 00:02:08 [restartedMain] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-06-18 00:02:08 [restartedMain] INFO  Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"]
+2025-06-18 00:02:08 [restartedMain] INFO  TomcatWebServer - Tomcat started on port 8090 (http) with context path '/'
+2025-06-18 00:02:08 [restartedMain] INFO  DemoJwtApplication - Started DemoJwtApplication in 4.173 seconds (process running for 4.629)
+2025-06-18 00:02:21 [http-nio-8090-exec-1] INFO  [/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-18 00:02:21 [http-nio-8090-exec-1] INFO  DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-18 00:02:21 [http-nio-8090-exec-1] INFO  DispatcherServlet - Completed initialization in 1 ms
+2025-06-18 00:02:21 [http-nio-8090-exec-1] DEBUG JWTAuthenticationFilter - Intentando autenticar usuario: admin@example.com
+2025-06-18 00:02:22 [http-nio-8090-exec-1] DEBUG TokenUtils - Generando token para usuario: admin@example.com
+2025-06-18 00:02:22 [http-nio-8090-exec-1] INFO  JWTAuthenticationFilter - Autenticación exitosa para usuario: admin@example.com
+2025-06-18 00:02:24 [http-nio-8090-exec-3] DEBUG TokenUtils - Token válido para usuario: admin@example.com
+2025-06-18 00:02:24 [http-nio-8090-exec-3] DEBUG JWTAuthorizationFilter - Token válido, contexto de seguridad actualizado.
+2025-06-18 00:02:24 [http-nio-8090-exec-3] INFO  EmpleadosController - Iniciando proceso - TransactionId: 123456789
+2025-06-18 00:02:24 [http-nio-8090-exec-3] INFO  EmpleadosController - Header: {
+  "transactionId" : "123456789",
+  "authorization" : null,
+  "accept" : null
+}
+2025-06-18 00:02:24 [http-nio-8090-exec-3] INFO  EmpleadosServiceImpl - Buscando empleado con ID: 2
+2025-06-18 00:02:24 [http-nio-8090-exec-3] INFO  EmpleadosController - Proceso procesado exitosamente - TransactionId: 123456789
+2025-06-18 00:02:24 [http-nio-8090-exec-3] INFO  EmpleadosController - Tiempo total de procesamiento - TransactionId: 123456789 - Tiempo: 23 ms
+2025-06-18 00:02:24 [http-nio-8090-exec-3] INFO  EmpleadosController - Response: {
+  "audit" : {
+    "code" : "0",
+    "message" : "Proceso exitoso."
+  },
+  "response" : {
+    "id" : 2,
+    "nombre" : "Ana",
+    "apellido" : "Martínez",
+    "fechaNac" : "1990-02-20T00:00:00Z",
+    "reportaA" : 1,
+    "extension" : 5678
+  }
+}
+2025-06-18 00:04:08 [SpringApplicationShutdownHook] INFO  GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-18 00:04:09 [tomcat-shutdown] INFO  GracefulShutdown - Graceful shutdown complete
+2025-06-18 00:04:09 [SpringApplicationShutdownHook] INFO  LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-18 00:04:09 [SpringApplicationShutdownHook] INFO  HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-18 00:04:09 [SpringApplicationShutdownHook] INFO  HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-06-18 00:16:35 [restartedMain] INFO  DemoJwtApplication - Starting DemoJwtApplication using Java 17.0.12 with PID 336560 (D:\WorkSpace\ideaSpace\demo-jwt\target\classes started by Marco in D:\WorkSpace\ideaSpace\demo-jwt)
+2025-06-18 00:16:35 [restartedMain] DEBUG DemoJwtApplication - Running with Spring Boot v3.4.5, Spring v6.2.6
+2025-06-18 00:16:35 [restartedMain] INFO  DemoJwtApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-18 00:16:35 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-06-18 00:16:35 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-06-18 00:16:36 [restartedMain] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-18 00:16:36 [restartedMain] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 43 ms. Found 2 JPA repository interfaces.
+2025-06-18 00:16:37 [restartedMain] INFO  TomcatWebServer - Tomcat initialized with port 8090 (http)
+2025-06-18 00:16:37 [restartedMain] INFO  Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"]
+2025-06-18 00:16:37 [restartedMain] INFO  StandardService - Starting service [Tomcat]
+2025-06-18 00:16:37 [restartedMain] INFO  StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-06-18 00:16:37 [restartedMain] INFO  [/] - Initializing Spring embedded WebApplicationContext
+2025-06-18 00:16:37 [restartedMain] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1718 ms
+2025-06-18 00:16:37 [restartedMain] DEBUG JWTAuthorizationFilter - Filter 'JWTAuthorizationFilter' configured for use
+2025-06-18 00:16:37 [restartedMain] INFO  HikariDataSource - HikariPool-1 - Starting...
+2025-06-18 00:16:37 [restartedMain] INFO  HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6d348a64
+2025-06-18 00:16:37 [restartedMain] INFO  HikariDataSource - HikariPool-1 - Start completed.
+2025-06-18 00:16:38 [restartedMain] INFO  SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-18 00:16:38 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-18 00:16:38 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailServiceImpl
+2025-06-18 00:16:39 [restartedMain] INFO  OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-06-18 00:16:39 [restartedMain] INFO  Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"]
+2025-06-18 00:16:39 [restartedMain] INFO  TomcatWebServer - Tomcat started on port 8090 (http) with context path '/'
+2025-06-18 00:16:39 [restartedMain] INFO  DemoJwtApplication - Started DemoJwtApplication in 4.281 seconds (process running for 4.76)
+2025-06-18 00:16:43 [http-nio-8090-exec-1] INFO  [/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-18 00:16:43 [http-nio-8090-exec-1] INFO  DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-18 00:16:43 [http-nio-8090-exec-1] INFO  DispatcherServlet - Completed initialization in 1 ms
+2025-06-18 00:16:44 [http-nio-8090-exec-1] DEBUG JWTAuthenticationFilter - Intentando autenticar usuario: admin@example.com
+2025-06-18 00:16:44 [http-nio-8090-exec-1] DEBUG TokenUtils - Generando token para usuario: admin@example.com
+2025-06-18 00:16:44 [http-nio-8090-exec-1] INFO  JWTAuthenticationFilter - Autenticación exitosa para usuario: admin@example.com
+2025-06-18 00:17:00 [http-nio-8090-exec-3] DEBUG TokenUtils - Token válido para usuario: admin@example.com
+2025-06-18 00:17:00 [http-nio-8090-exec-3] DEBUG JWTAuthorizationFilter - Token válido, contexto de seguridad actualizado.
+2025-06-18 00:17:00 [http-nio-8090-exec-3] INFO  EmpleadosController - Iniciando proceso - TransactionId: 123456789
+2025-06-18 00:17:00 [http-nio-8090-exec-3] INFO  EmpleadosController - Header: {
+  "transactionId" : "123456789",
+  "authorization" : null,
+  "accept" : null
+}
+2025-06-18 00:17:00 [http-nio-8090-exec-3] INFO  EmpleadosServiceImpl - Buscando empleado con ID: 2
+2025-06-18 00:17:00 [http-nio-8090-exec-3] INFO  EmpleadosController - Proceso procesado exitosamente - TransactionId: 123456789
+2025-06-18 00:17:00 [http-nio-8090-exec-3] INFO  EmpleadosController - Tiempo total de procesamiento - TransactionId: 123456789 - Tiempo: 27 ms
+2025-06-18 00:17:00 [http-nio-8090-exec-3] INFO  EmpleadosController - Response: {
+  "audit" : {
+    "code" : "0",
+    "message" : "Proceso exitoso."
+  },
+  "response" : {
+    "id" : 2,
+    "nombre" : "Ana",
+    "apellido" : "Martínez",
+    "fechaNac" : "1990-02-20T00:00:00Z",
+    "reportaA" : 1,
+    "extension" : 5678
+  }
+}
+2025-06-18 00:18:49 [http-nio-8090-exec-5] DEBUG TokenUtils - Token válido para usuario: admin@example.com
+2025-06-18 00:18:49 [http-nio-8090-exec-5] DEBUG JWTAuthorizationFilter - Token válido, contexto de seguridad actualizado.
+2025-06-18 00:18:49 [http-nio-8090-exec-5] INFO  EmpleadosController - Iniciando proceso - TransactionId: 123456789
+2025-06-18 00:18:49 [http-nio-8090-exec-5] INFO  EmpleadosController - Header: {
+  "transactionId" : "123456789",
+  "authorization" : null,
+  "accept" : null
+}
+2025-06-18 00:18:49 [http-nio-8090-exec-5] INFO  EmpleadosServiceImpl - Buscando empleado con ID: 2
+2025-06-18 00:18:49 [http-nio-8090-exec-5] INFO  EmpleadosController - Proceso procesado exitosamente - TransactionId: 123456789
+2025-06-18 00:18:49 [http-nio-8090-exec-5] INFO  EmpleadosController - Tiempo total de procesamiento - TransactionId: 123456789 - Tiempo: 3 ms
+2025-06-18 00:18:49 [http-nio-8090-exec-5] INFO  EmpleadosController - Response: {
+  "audit" : {
+    "code" : "0",
+    "message" : "Proceso exitoso."
+  },
+  "response" : {
+    "id" : 2,
+    "nombre" : "Ana",
+    "apellido" : "Martínez",
+    "fechaNac" : "1990-02-20T00:00:00Z",
+    "reportaA" : 1,
+    "extension" : 5678
+  }
+}
+2025-06-18 00:18:50 [http-nio-8090-exec-7] DEBUG TokenUtils - Token válido para usuario: admin@example.com
+2025-06-18 00:18:50 [http-nio-8090-exec-7] DEBUG JWTAuthorizationFilter - Token válido, contexto de seguridad actualizado.
+2025-06-18 00:18:50 [http-nio-8090-exec-7] INFO  EmpleadosController - Iniciando proceso - TransactionId: 123456789
+2025-06-18 00:18:50 [http-nio-8090-exec-7] INFO  EmpleadosController - Header: {
+  "transactionId" : "123456789",
+  "authorization" : null,
+  "accept" : null
+}
+2025-06-18 00:18:50 [http-nio-8090-exec-7] INFO  EmpleadosServiceImpl - Buscando empleado con ID: 2
+2025-06-18 00:18:50 [http-nio-8090-exec-7] INFO  EmpleadosController - Proceso procesado exitosamente - TransactionId: 123456789
+2025-06-18 00:18:50 [http-nio-8090-exec-7] INFO  EmpleadosController - Tiempo total de procesamiento - TransactionId: 123456789 - Tiempo: 4 ms
+2025-06-18 00:18:50 [http-nio-8090-exec-7] INFO  EmpleadosController - Response: {
+  "audit" : {
+    "code" : "0",
+    "message" : "Proceso exitoso."
+  },
+  "response" : {
+    "id" : 2,
+    "nombre" : "Ana",
+    "apellido" : "Martínez",
+    "fechaNac" : "1990-02-20T00:00:00Z",
+    "reportaA" : 1,
+    "extension" : 5678
+  }
+}
+2025-06-18 00:18:50 [http-nio-8090-exec-8] DEBUG TokenUtils - Token válido para usuario: admin@example.com
+2025-06-18 00:18:50 [http-nio-8090-exec-8] DEBUG JWTAuthorizationFilter - Token válido, contexto de seguridad actualizado.
+2025-06-18 00:18:50 [http-nio-8090-exec-8] INFO  EmpleadosController - Iniciando proceso - TransactionId: 123456789
+2025-06-18 00:18:50 [http-nio-8090-exec-8] INFO  EmpleadosController - Header: {
+  "transactionId" : "123456789",
+  "authorization" : null,
+  "accept" : null
+}
+2025-06-18 00:18:50 [http-nio-8090-exec-8] INFO  EmpleadosServiceImpl - Buscando empleado con ID: 2
+2025-06-18 00:18:50 [http-nio-8090-exec-8] INFO  EmpleadosController - Proceso procesado exitosamente - TransactionId: 123456789
+2025-06-18 00:18:50 [http-nio-8090-exec-8] INFO  EmpleadosController - Tiempo total de procesamiento - TransactionId: 123456789 - Tiempo: 4 ms
+2025-06-18 00:18:50 [http-nio-8090-exec-8] INFO  EmpleadosController - Response: {
+  "audit" : {
+    "code" : "0",
+    "message" : "Proceso exitoso."
+  },
+  "response" : {
+    "id" : 2,
+    "nombre" : "Ana",
+    "apellido" : "Martínez",
+    "fechaNac" : "1990-02-20T00:00:00Z",
+    "reportaA" : 1,
+    "extension" : 5678
+  }
+}
+2025-06-18 00:18:51 [http-nio-8090-exec-9] DEBUG TokenUtils - Token válido para usuario: admin@example.com
+2025-06-18 00:18:51 [http-nio-8090-exec-9] DEBUG JWTAuthorizationFilter - Token válido, contexto de seguridad actualizado.
+2025-06-18 00:18:51 [http-nio-8090-exec-9] INFO  EmpleadosController - Iniciando proceso - TransactionId: 123456789
+2025-06-18 00:18:51 [http-nio-8090-exec-9] INFO  EmpleadosController - Header: {
+  "transactionId" : "123456789",
+  "authorization" : null,
+  "accept" : null
+}
+2025-06-18 00:18:51 [http-nio-8090-exec-9] INFO  EmpleadosServiceImpl - Buscando empleado con ID: 2
+2025-06-18 00:18:51 [http-nio-8090-exec-9] INFO  EmpleadosController - Proceso procesado exitosamente - TransactionId: 123456789
+2025-06-18 00:18:51 [http-nio-8090-exec-9] INFO  EmpleadosController - Tiempo total de procesamiento - TransactionId: 123456789 - Tiempo: 3 ms
+2025-06-18 00:18:51 [http-nio-8090-exec-9] INFO  EmpleadosController - Response: {
+  "audit" : {
+    "code" : "0",
+    "message" : "Proceso exitoso."
+  },
+  "response" : {
+    "id" : 2,
+    "nombre" : "Ana",
+    "apellido" : "Martínez",
+    "fechaNac" : "1990-02-20T00:00:00Z",
+    "reportaA" : 1,
+    "extension" : 5678
+  }
+}
+2025-06-18 00:23:28 [http-nio-8090-exec-1] DEBUG TokenUtils - Token válido para usuario: admin@example.com
+2025-06-18 00:23:28 [http-nio-8090-exec-1] DEBUG JWTAuthorizationFilter - Token válido, contexto de seguridad actualizado.
+2025-06-18 00:23:28 [http-nio-8090-exec-1] INFO  EmpleadosController - Iniciando proceso - TransactionId: 123456789
+2025-06-18 00:23:28 [http-nio-8090-exec-1] INFO  EmpleadosController - Header: {
+  "transactionId" : "123456789",
+  "authorization" : null,
+  "accept" : null
+}
+2025-06-18 00:23:28 [http-nio-8090-exec-1] INFO  EmpleadosServiceImpl - Buscando empleado con ID: 2
+2025-06-18 00:23:28 [http-nio-8090-exec-1] INFO  EmpleadosController - Proceso procesado exitosamente - TransactionId: 123456789
+2025-06-18 00:23:28 [http-nio-8090-exec-1] INFO  EmpleadosController - Tiempo total de procesamiento - TransactionId: 123456789 - Tiempo: 5 ms
+2025-06-18 00:23:28 [http-nio-8090-exec-1] INFO  EmpleadosController - Response: {
+  "audit" : {
+    "code" : "0",
+    "message" : "Proceso exitoso."
+  },
+  "response" : {
+    "id" : 2,
+    "nombre" : "Ana",
+    "apellido" : "Martínez",
+    "fechaNac" : "1990-02-20T00:00:00Z",
+    "reportaA" : 1,
+    "extension" : 5678
+  }
+}
+2025-06-18 00:23:46 [http-nio-8090-exec-3] DEBUG JWTAuthenticationFilter - Intentando autenticar usuario: admin@example.com
+2025-06-18 00:23:46 [http-nio-8090-exec-3] DEBUG TokenUtils - Generando token para usuario: admin@example.com
+2025-06-18 00:23:46 [http-nio-8090-exec-3] INFO  JWTAuthenticationFilter - Autenticación exitosa para usuario: admin@example.com
+2025-06-18 00:27:02 [SpringApplicationShutdownHook] INFO  GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-18 00:27:02 [tomcat-shutdown] INFO  GracefulShutdown - Graceful shutdown complete
+2025-06-18 00:27:02 [SpringApplicationShutdownHook] INFO  LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-18 00:27:02 [SpringApplicationShutdownHook] INFO  HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-18 00:27:02 [SpringApplicationShutdownHook] INFO  HikariDataSource - HikariPool-1 - Shutdown completed.

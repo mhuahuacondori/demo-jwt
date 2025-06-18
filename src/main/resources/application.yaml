@@ -1,0 +1,23 @@
+server:
+  port: 8090
+
+spring:
+  jpa:
+    open-in-view: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/demojwtdb
+    username: tu_usuario
+    password: tu_contraseña
+
+access:
+  token:
+    secret: 4t7w!z%C*F-JaNdRgUkXp2s5u8x/A?D(
+    validity:
+      seconds: 2592000
+
+
+
+logging:
+  level:
+    root: INFO
+    org.hibernate.demojwt: DEBUG

@@ -1,52 +1,74 @@
 package org.hibernate.demojwt.security;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtException;
-import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.demojwt.common.PropertiesExternos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Component;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-@Component
+
+import javax.crypto.SecretKey;
+import java.util.*;
+
 @Slf4j
+@Component
+@RequiredArgsConstructor
 public class TokenUtils {
-    private static PropertiesExternos prop;
+
     @Autowired
-    private TokenUtils(PropertiesExternos prop){
-        TokenUtils.prop = prop;
-    }
-    public static String createToken(String nombre, String email){
+    private PropertiesExternos properties;
 
-        long expirationTime = Long.parseLong(prop.accessTokenValiditySeconds) * 1_000;
-        Date expirationDate =new Date(System.currentTimeMillis()+expirationTime);
+    /**
+     * Genera un JWT con nombre y email como claims.
+     *
+     * @param nombre Nombre del usuario
+     * @param email  Email del usuario (usado como subject)
+     * @return JWT como String
+     */
+    public String createToken(String nombre, String email) {
+        log.debug("Generando token para usuario: {}", email);
 
-        Map<String,Object> extra = new HashMap<>();
-        extra.put("nombre", nombre);
+
+        SecretKey key = Keys.hmacShaKeyFor(properties.getSecret().getBytes());
+        long expirationTimeMillis = Long.parseLong(properties.getValidity().getSeconds()) * 1000;
+        Date expirationDate = new Date(System.currentTimeMillis() + expirationTimeMillis);
+
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("nombre", nombre);
 
         return Jwts.builder()
                 .setSubject(email)
                 .setExpiration(expirationDate)
-                .addClaims(extra)
-                .signWith(Keys.hmacShaKeyFor(prop.accessTokenSecret.getBytes()))
+                .addClaims(claims)
+                .signWith(key)
                 .compact();
     }
 
-    public static UsernamePasswordAuthenticationToken getAuthentication(String token){
+    /**
+     * Extrae la autenticación desde un JWT.
+     *
+     * @param token JWT recibido
+     * @return UsernamePasswordAuthenticationToken si es válido, null si no
+     */
+    public UsernamePasswordAuthenticationToken getAuthentication(String token) {
         try {
+            SecretKey key = Keys.hmacShaKeyFor(properties.getSecret().getBytes());
+
             Claims claims = Jwts.parserBuilder()
-                    .setSigningKey(prop.accessTokenSecret.getBytes())
+                    .setSigningKey(key)
                     .build()
                     .parseClaimsJws(token)
                     .getBody();
+
             String email = claims.getSubject();
+
+            log.debug("Token válido para usuario: {}", email);
+
             return new UsernamePasswordAuthenticationToken(email, null, Collections.emptyList());
-        }catch (JwtException e){
+        } catch (JwtException e) {
+            log.warn("Token inválido o expirado: {}", e.getMessage());
             return null;
         }
     }

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+
+        <!--  Consola con color -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout
+                    disableAnsi="false"
+                    pattern="%highlight{%d{HH:mm:ss} [%t] %-5level %c{1} - %msg%n}{FATAL=red bold, ERROR=red, WARN=yellow, INFO=green, DEBUG=cyan}" />
+        </Console>
+
+        <!--  Log general -->
+        <RollingFile name="AppFile"
+                     fileName="logs/app.log"
+                     filePattern="logs/app-%d{yyyy-MM-dd}.log.gz">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p %c{1} - %m%n" />
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" />
+            </Policies>
+        </RollingFile>
+
+        <!--  Log exclusivo para errores -->
+        <RollingFile name="ErrorFile"
+                     fileName="logs/error.log"
+                     filePattern="logs/error-%d{yyyy-MM-dd}.log.gz">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level %c - %msg%n" />
+            <Filters>
+                <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY" />
+            </Filters>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" />
+            </Policies>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+        <!-- Logging específico por paquete -->
+        <Logger name="org.springframework" level="INFO" />
+        <Logger name="org.hibernate" level="WARN" />
+
+        <!--  Logger raíz -->
+        <Root level="INFO">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="AppFile" />
+            <AppenderRef ref="ErrorFile" />
+        </Root>
+    </Loggers>
+</Configuration>

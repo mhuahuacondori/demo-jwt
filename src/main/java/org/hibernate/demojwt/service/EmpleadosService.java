@@ -1,15 +1,19 @@
 package org.hibernate.demojwt.service;
 
-import org.hibernate.demojwt.entity.Empleados;
+import org.hibernate.demojwt.dto.EmpleadosDTO;
+import org.hibernate.demojwt.exception.ValidationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+
 import java.util.List;
 
 public interface EmpleadosService {
-    List<Empleados> getAll();
 
-    Empleados getById(Long id) throws Exception;
+    public Page<EmpleadosDTO> getAll(Pageable pageable) throws ValidationException;
+    public EmpleadosDTO getById(Long id) throws ValidationException;
+    public EmpleadosDTO save(EmpleadosDTO empleadosDTO) throws ValidationException;
+    public EmpleadosDTO update(EmpleadosDTO empleadosDTO) throws ValidationException;
+    public String delete(Long id ) throws ValidationException;
 
-    void save(Empleados empleados);
-    Empleados update(Long id,Empleados empleados) throws Exception;
-
-    void delete(Long id) throws Exception;
 }

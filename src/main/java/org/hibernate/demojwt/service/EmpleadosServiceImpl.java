@@ -1,67 +1,99 @@
 package org.hibernate.demojwt.service;
 
-import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.hibernate.demojwt.common.Constantes;
+import org.hibernate.demojwt.dto.EmpleadosDTO;
 import org.hibernate.demojwt.entity.Empleados;
+import org.hibernate.demojwt.exception.ValidationException;
+import org.hibernate.demojwt.mapper.EmpleadosMapper;
 import org.hibernate.demojwt.repository.EmpleadosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.List;
-import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+@Slf4j
 @Service
-@RequiredArgsConstructor
-public class EmpleadosServiceImpl implements EmpleadosService{
+public class EmpleadosServiceImpl implements EmpleadosService {
+
     @Autowired
-    EmpleadosRepository empleadosRepository;
+    private EmpleadosRepository empleadosRepository;
 
+    @Autowired
+    private EmpleadosMapper empleadosMapper;
 
     @Override
-    public List<Empleados> getAll() {
-        return this.empleadosRepository.findAll();
+    public Page<EmpleadosDTO> getAll(Pageable pageable) {
+        log.info("Obteniendo todos los empleados con paginación: {}", pageable);
+        return empleadosRepository.findAll(pageable)
+                .map(empleadosMapper::toDTO);
     }
 
     @Override
-    public Empleados getById(Long id) throws Exception {
-        Optional<Empleados> optionalEmpleados = this.empleadosRepository.findById(id);
-        if(optionalEmpleados.isPresent()) {
-            return optionalEmpleados.get();
-        }else {
-            throw new Exception("Registro no encontrado con id "+id);
+    public EmpleadosDTO getById(Long id) {
+        validarId(id);
+        log.info("Buscando empleado con ID: {}", id);
+        Empleados empleado = findEmpleadoById(id);
+        return empleadosMapper.toDTO(empleado);
+    }
+
+    @Override
+    public EmpleadosDTO save(EmpleadosDTO empleadosDTO) {
+        validarDTO(empleadosDTO, false);
+        log.info("Guardando nuevo empleado: {}", empleadosDTO);
+        Empleados empleado = empleadosMapper.toEntity(empleadosDTO);
+        Empleados guardado = empleadosRepository.save(empleado);
+        log.info("Empleado guardado con ID: {}", guardado.getId());
+        return empleadosMapper.toDTO(guardado);
+    }
+
+    @Override
+    public EmpleadosDTO update(EmpleadosDTO empleadosDTO) {
+        validarDTO(empleadosDTO, true);
+        Long id = empleadosDTO.getId();
+        log.info("Actualizando empleado con ID: {}", id);
+        Empleados existente = findEmpleadoById(id);
+        empleadosMapper.updateEntityFromDTO(empleadosDTO, existente);
+        Empleados actualizado = empleadosRepository.save(existente);
+        log.info("Empleado actualizado con ID: {}", actualizado.getId());
+        return empleadosMapper.toDTO(actualizado);
+    }
+
+    @Override
+    public String delete(Long id) {
+        validarId(id);
+        log.info("Eliminando empleado con ID: {}", id);
+        Empleados empleado = findEmpleadoById(id);
+        empleadosRepository.deleteById(empleado.getId());
+        log.info("Empleado eliminado con ID: {}", empleado.getId());
+        return "Empleado eliminado con ID [" + empleado.getId() + "]";
+
+    }
+
+    private Empleados findEmpleadoById(Long id) {
+        return empleadosRepository.findById(id)
+                .orElseThrow(() -> {
+                    log.warn("Empleado no encontrado con ID: {}", id);
+                    return new ValidationException("Registro no encontrado con id [" + id + "]", Constantes.CODE_VALIDATION);
+                });
+    }
+
+    private void validarId(Long id) {
+        if (id == null || id <= 0) {
+            log.warn("ID inválido: {}", id);
+            throw new ValidationException("ID inválido: " + id, Constantes.CODE_VALIDATION);
         }
     }
 
-    @Override
-    public void save(Empleados empleados) {
-        this.empleadosRepository.save(empleados);
-    }
-
-    @Override
-    public Empleados update(Long id,Empleados empleados) throws Exception {
-        Optional<Empleados> optionalEmpleados = this.empleadosRepository.findById(id);
-
-        if(optionalEmpleados.isPresent()) {
-            Empleados empleadosUpdate = optionalEmpleados.get();
-            //empleadosUpdate.setId(id);
-            empleadosUpdate.setNombre(empleados.getNombre());
-            empleadosUpdate.setApellido(empleados.getApellido());
-            empleadosUpdate.setFechaNac(empleados.getFechaNac());
-            empleadosUpdate.setReportaA(empleados.getReportaA());
-            empleadosUpdate.setExtension(empleados.getExtension());
-            this.empleadosRepository.save(empleadosUpdate);
-            return empleadosUpdate;
-        }else {
-            throw new Exception("Registro no encontrado con id "+id);
+    private void validarDTO(EmpleadosDTO dto, boolean requiereId) {
+        if (dto == null) {
+            log.warn("DTO recibido es nulo");
+            throw new ValidationException("El objeto EmpleadosDTO no puede ser nulo", Constantes.CODE_VALIDATION);
         }
-    }
-
-    @Override
-    public void delete(Long id) throws Exception {
-        Optional<Empleados> empleados = this.empleadosRepository.findById(id);
-
-        if(empleados.isPresent()) {
-            this.empleadosRepository.delete(empleados.get());
-        }else {
-            throw new Exception("Registro no encontrado con id "+id);
+        if (requiereId && (dto.getId() == null || dto.getId() <= 0)) {
+            log.warn("ID requerido pero inválido en DTO: {}", dto);
+            throw new ValidationException("ID inválido para actualización", Constantes.CODE_VALIDATION);
         }
     }
 }
